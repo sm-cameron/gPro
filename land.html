@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="smCameron">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable = no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-startup-image" href="launch.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="apple-mobile-web-app-title" content="gPro">
+    <link rel="icon" type="image/png" href="icon.png" />
+    <title>gPro</title>
+
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://necolas.github.com/normalize.css/3.0.1/normalize.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller="NavController as nav">
+<nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" ng-click="nav.setTab(1)"><span style="color: #009cff;">g</span>Pro</a>
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav">
+                <li ng-class="{ active:nav.isSet(1) }"><a href="#" ng-click="nav.setTab(1)">Tableau de bord</a></li>
+                <li ng-class="{ active:nav.isSet(2) }"><a href="#" ng-click="nav.setTab(2)">Inventaire</a></li>
+                <li ng-class="{ active:nav.dropSet(3,5) }">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Employ&eacute;s<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" ng-click="nav.setTab(3)">Cr&eacute;ation d'un employ&eacute;</a></li>
+                        <li><a href="#" ng-click="nav.setTab(4)">Afficher les employ&eacute;s</a></li>
+                    </ul>
+                </li>
+                <li ng-class="{ active:nav.isSet(6) }"><a href="#" ng-click="nav.setTab(6)">Calendrier</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Param&egrave;tres<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Aide</a></li>
+                        <li><a href="#">Configuration</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">D&eacute;connexion</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div ng-class="nav.classS(1)" id="dashboard">
+    <div class="jumbotron">
+        <h1>{{nav.sectionName()}} <small>- <span style="color: #009cff;">g</span>Pro</small></h1>
+        <p>Voici l'activit&eacute; en cours dans le magasin!</p>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="active">{{nav.sectionName()}}</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Locaux disponibles</h1>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nom du local</th>
+                                <th>Statut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Studio Noir</td>
+                                <td class="success">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>Studio Rouge</td>
+                                <td class="danger">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1>Messagerie</h1>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">Message 1</h4>
+                        <p class="list-group-item-text">Texte du message 1</p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">Message 2</h4>
+                        <p class="list-group-item-text">Texte du message 2</p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">Message 3</h4>
+                        <p class="list-group-item-text">Texte du message 3</p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h1>T&acirc;ches &agrave; faire</h1>
+                <ul class="list-group">
+                    <li class="list-group-item">Accorder les instruments<span class="badge"><span class="glyphicon glyphicon-chevron-right"></span></span></li>
+                    <li class="list-group-item">T&acirc;che 2<span class="badge"><span class="glyphicon glyphicon-chevron-right"></span></span></li>
+                    <li class="list-group-item">T&acirc;che 3<span class="badge"><span class="glyphicon glyphicon-chevron-right"></span></span></li>
+                    <li class="list-group-item">T&acirc;che 4<span class="badge"><span class="glyphicon glyphicon-chevron-right"></span></span></li>
+                </ul>
+            </div>
+        </div>
+        <blockquote class="blockquote-reverse">
+            <p>&copy; AML Design 2014</p>
+        </blockquote>
+    </div>
+</div>
+<div id="inventaire" ng-class="nav.classS(2)">
+    <div class="jumbotron">
+        <h1>{{nav.sectionName()}} <small>- <span style="color: #009cff;">g</span>Pro</small></h1>
+        <p>D&eacute;sol&eacute;, cette fonction n'est pas prise en charge pour l'instant! :(</p>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="active">{{nav.sectionName()}}</li>
+        </ol>
+        <blockquote class="blockquote-reverse">
+            <p>&copy; AML Design 2014</p>
+        </blockquote>
+    </div>
+</div>
+<div id="crEmpl" ng-class="nav.classS(3)">
+    <div class="jumbotron">
+        <h1>{{nav.sectionName()}} <small>- <span style="color: #009cff;">g</span>Pro</small></h1>
+        <p>D&eacute;sol&eacute;, cette fonction n'est pas prise en charge pour l'instant! :(</p>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="#" ng-click="nav.setTab(5)">Employ&eacute;s</a></li>
+            <li class="active">{{nav.sectionName()}}</li>
+        </ol>
+        <blockquote class="blockquote-reverse">
+            <p>&copy; AML Design 2014</p>
+        </blockquote>
+    </div>
+</div>
+<div id="afEmpl" ng-class="nav.classS(4)">
+    <div class="jumbotron">
+        <h1>{{nav.sectionName()}} <small>- <span style="color: #009cff;">g</span>Pro</small></h1>
+        <p>D&eacute;sol&eacute;, cette fonction n'est pas prise en charge pour l'instant! :(</p>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="#" ng-click="nav.setTab(5)">Employ&eacute;s</a></li>
+            <li class="active">{{nav.sectionName()}}</li>
+        </ol>
+        <blockquote class="blockquote-reverse">
+            <p>&copy; AML Design 2014</p>
+        </blockquote>
+    </div>
+</div>
+<div id="empl" ng-class="nav.classS(5)">
+    <div class="jumbotron">
+        <h1>{{nav.sectionName()}} <small>- <span style="color: #009cff;">g</span>Pro</small></h1>
+        <p>Centre de contr&ocirc;le des employ&eacute;s.</p>
+    </div>
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="active">Employ&eacute;s</li>
+        </ol>
+        <blockquote class="blockquote-reverse">
+            <p>&copy; AML Design 2014</p>
+        </blockquote>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="bootstrap/js/bootstrap.min.js">
+    $('.dropdown-toggle').dropdown();
+</script>
+</body>
+</html>

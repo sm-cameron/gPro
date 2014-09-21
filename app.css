@@ -1,0 +1,13 @@
+/**
+ * Created by Alexandre M.-Lemay on 2014-09-20.
+ */
+
+.hiddenAJS {
+    display: none;
+}
+
+.showAJS {
+    display: block;
+}
+
+body { padding-top: 70px; }
